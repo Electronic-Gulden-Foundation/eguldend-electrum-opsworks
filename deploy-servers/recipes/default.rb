@@ -13,14 +13,14 @@ end
 eguldend_password = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
 
 template "/root/build/eguldend-docker/.env" do
-	source "eguldend.env"
+	source "eguldend.env.erb"
 	variables({
 		:password => eguldend_password,
 	})
 end
 
 template "/root/build/egulden-electrum-docker/.env" do
-	source "egulden-electrum.env"
+	source "egulden-electrum.env.erb"
 	variables({
 		:daemon_password => eguldend_password,
 	})
